@@ -20,23 +20,24 @@ connectDB();
 const app = express();
 
 // Middlewares
-// CLIENT_URL set in Render dashboard → your Vercel frontend URL
 const allowedOrigins = [
-  process.env.CLIENT_URL,                  // e.g. https://your-app.vercel.app
-  'http://localhost:5173',                  // Vite dev server
-  'http://localhost:3000',                  // fallback
+  'https://iks-project-dusky.vercel.app',   // production frontend (Vercel)
+  process.env.CLIENT_URL,                    // override via Render env var
+  'http://localhost:5173',                   // Vite dev server
+  'http://localhost:3000',                   // fallback
 ].filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
-    // allow server-to-server calls (no origin) and listed origins
+    // allow server-to-server / curl (no origin header) + listed origins
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.warn(`[CORS] Blocked origin: ${origin}`);
       callback(new Error(`CORS blocked: ${origin}`));
     }
   },
-  credentials: true,                        // needed if you ever send cookies
+  credentials: true,
 }));
 app.use(express.json());
 
