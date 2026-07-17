@@ -45,6 +45,17 @@ if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
+// Root route — shown when someone opens the Render URL directly
+app.get('/', (req, res) => {
+  res.json({
+    status: 'ok',
+    name: 'IKS Ayurveda Advisory API',
+    version: '1.0.0',
+    health: '/api/health',
+    docs: 'Connect your frontend at https://iks-project-dusky.vercel.app',
+  });
+});
+
 // Health check endpoint
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Ayurveda Advisory API is running' });
