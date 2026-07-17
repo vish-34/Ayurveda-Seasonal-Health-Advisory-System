@@ -1,0 +1,49 @@
+# Dependency directories (both root, client, and server)
+node_modules/
+client/node_modules/
+server/node_modules/
+
+# Build outputs
+dist/
+client/dist/
+build/
+.cache/
+.parcel-cache/
+
+# Environment configurations containing credentials & secret keys
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+server/.env
+client/.env
+server/.env.local
+client/.env.local
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# System & Editor configurations
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvsca
+*.njsproj
+*.sln
+*.sw?
+
+# Local test coverage reports
+coverage/
+.nyc_output/
+
+# Temporary / Scratch scripts
+scratch/
+.agents/
